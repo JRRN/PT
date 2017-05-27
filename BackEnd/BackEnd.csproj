@@ -43,6 +43,9 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <ItemGroup>
+    <Reference Include="AutoMapper, Version=5.2.0.0, Culture=neutral, PublicKeyToken=be96cd2c38ef1005, processorArchitecture=MSIL">
+      <HintPath>..\packages\AutoMapper.5.2.0\lib\net45\AutoMapper.dll</HintPath>
+    </Reference>
     <Reference Include="Microsoft.CodeDom.Providers.DotNetCompilerPlatform, Version=1.0.4.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
       <HintPath>..\packages\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.1.0.4\lib\net45\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.dll</HintPath>
       <Private>True</Private>
@@ -106,8 +109,11 @@
     <Content Include="Web.config" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="App_Start\AutomapperWebAPIProfile.cs" />
     <Compile Include="App_Start\UnityConfig.cs" />
     <Compile Include="App_Start\WebApiConfig.cs" />
+    <Compile Include="Controllers\Base\BaseController.cs" />
+    <Compile Include="Controllers\EnterPointController.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
@@ -124,8 +130,33 @@
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
-    <Folder Include="Controllers\" />
     <Folder Include="Models\" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\11 Authorization\Authorization.Logic\CustomAuthorization.Logic.csproj">
+      <Project>{6349ae86-8f5d-4df2-bd67-1c3cd6b2e1dd}</Project>
+      <Name>CustomAuthorization.Logic</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\11 Authorization\Authorization\CustomAuthorization.csproj">
+      <Project>{ad6551f8-7f19-48e5-b198-f693e31238ff}</Project>
+      <Name>CustomAuthorization</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\20 Application\Application.Logic\Application.Logic.csproj">
+      <Project>{d6ee6487-1004-45b7-8267-6b6078f7ff9d}</Project>
+      <Name>Application.Logic</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\20 Application\Application\Application.csproj">
+      <Project>{2FAA9269-BFAD-4622-8B24-AF3BE025CC72}</Project>
+      <Name>Application</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\30 Domain\Domain.Model\Domain.Model.csproj">
+      <Project>{4E66542D-E804-4B74-9108-50CDC8F6603A}</Project>
+      <Name>Domain.Model</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\50 CrossCutting\CrossCutting\CrossCutting.csproj">
+      <Project>{38F4B3BE-5D92-4684-8916-1BB835F5D36F}</Project>
+      <Name>CrossCutting</Name>
+    </ProjectReference>
   </ItemGroup>
   <PropertyGroup>
     <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>

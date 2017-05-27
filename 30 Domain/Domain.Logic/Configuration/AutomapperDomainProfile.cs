@@ -6,12 +6,11 @@ namespace Domain.Logic.Configuration
     {
         protected override void Configure()
         {
-            //CreateMap<Repository.Model..Model.TmpReports, Model.Data.Reports.TmpReport>();
-            //CreateMap<Model.Data.Reports.TmpReport, Repository.Model.TmpReports>();
+            CreateMap<Repository.Model.Polices, Model.Polices>();
+            CreateMap<Model.Polices, Repository.Model.Polices>();
 
-            //CreateMap<Repository.Model.Reports, Model.Data.Reports.Report>();
-            //CreateMap<Model.Data.Reports.Report, Repository.Model.Reports>();
-            
+            CreateMap<Repository.Model.Clients, Model.Client>();
+            CreateMap<Model.Client, Repository.Model.Clients>();
         }
     }
 }

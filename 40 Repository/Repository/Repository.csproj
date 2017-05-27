@@ -72,7 +72,7 @@
     <Compile Include="Repositories\Base\IBaseReadRepository.cs" />
     <Compile Include="Repositories\Base\IBaseRepositoryCrud.cs" />
     <Compile Include="Repositories\Clientes\IClientesRepository.cs" />
-    <Compile Include="Repositories\Proveedores\IProveedoresRepository.cs" />
+    <Compile Include="Repositories\Polices\IPolicesRepository.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="App.Config" />
@@ -80,6 +80,12 @@
   </ItemGroup>
   <ItemGroup>
     <Service Include="{508349B6-6B84-4DF5-91F0-309BEEBAD82D}" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\Repository.Model\Repository.Model.csproj">
+      <Project>{d9a2d482-1cf9-403f-9b2d-95265f53fdf4}</Project>
+      <Name>Repository.Model</Name>
+    </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 

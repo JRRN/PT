@@ -5,9 +5,9 @@ using Microsoft.Practices.Unity;
 using Repository;
 using Repository.Logic;
 using Repository.Logic.Repositories.Clientes;
-using Repository.Logic.Repositories.Proveedores;
+using Repository.Logic.Repositories.Polices;
 using Repository.Repositories.Clientes;
-using Repository.Repositories.Proveedores;
+using Repository.Repositories.Polices;
 
 namespace Domain.Logic.Configuration
 {
@@ -30,7 +30,7 @@ namespace Domain.Logic.Configuration
             container.RegisterType<IClientesRepository , ClientesRepository>
                 (new InjectionConstructor(new ResolvedParameter<IUnitOfWork>(UnitOfWorkName)));
 
-            container.RegisterType<IProveedoresRepository, ProveedoresRepository>
+            container.RegisterType<IPolicesRepository, PolicesRepository>
                 (new InjectionConstructor(new ResolvedParameter<IUnitOfWork>(UnitOfWorkName)));
 
         }

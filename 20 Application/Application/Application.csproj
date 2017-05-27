@@ -48,6 +48,7 @@
     </Reference>
     <Reference Include="System" />
     <Reference Include="System.Core" />
+    <Reference Include="System.DirectoryServices" />
     <Reference Include="System.Xml.Linq" />
     <Reference Include="System.Data.DataSetExtensions" />
     <Reference Include="Microsoft.CSharp" />
@@ -57,14 +58,22 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Class1.cs" />
-    <Compile Include="Configuration\IAutomapperProfileService.cs" />
-    <Compile Include="Configuration\IServicesConfig.cs" />
+    <Compile Include="Configuration\IAutomapperProfileApplication.cs" />
+    <Compile Include="Configuration\IApplicationConfig.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Services\Base\IBaseApplicationCrud.cs" />
+    <Compile Include="Services\Base\IBaseReadApplication.cs" />
+    <Compile Include="Services\Client\IClientApplication.cs" />
+    <Compile Include="Services\Polices\IPoliceApplication.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="packages.config" />
   </ItemGroup>
   <ItemGroup>
+    <ProjectReference Include="..\..\30 Domain\Domain.Model\Domain.Model.csproj">
+      <Project>{4e66542d-e804-4b74-9108-50cdc8f6603a}</Project>
+      <Name>Domain.Model</Name>
+    </ProjectReference>
     <ProjectReference Include="..\..\50 CrossCutting\CrossCutting\CrossCutting.csproj">
       <Project>{38F4B3BE-5D92-4684-8916-1BB835F5D36F}</Project>
       <Name>CrossCutting</Name>

@@ -1,7 +1,9 @@
-﻿namespace Repository.Repositories.Clientes
+﻿using System.Collections.Generic;
+using Repository.Repositories.Base;
+
+namespace Repository.Repositories.Clientes
 {
-    public interface IClientesRepository
+    public interface IClientesRepository : IBaseReadRepository<Model.Clients, int>
     {
-        
     }
 }

@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Web.Http;
+using Unity.WebApi;
 
 namespace BackEnd
 {
@@ -13,6 +14,9 @@ namespace BackEnd
 
             // Rutas de API web
             config.MapHttpAttributeRoutes();
+
+            var container = UnityConfig.GetConfiguredContainer();
+            config.DependencyResolver = new UnityDependencyResolver(container);
 
             config.Routes.MapHttpRoute(
                 name: "DefaultApi",

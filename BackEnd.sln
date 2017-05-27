@@ -1,7 +1,7 @@
 ﻿
 Microsoft Visual Studio Solution File, Format Version 12.00
-# Visual Studio 14
-VisualStudioVersion = 14.0.25420.1
+# Visual Studio 15
+VisualStudioVersion = 15.0.26430.6
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "BackEnd", "BackEnd\BackEnd.csproj", "{E805AE48-1662-4A37-80E9-FA1A4C7B9591}"
 EndProject
@@ -21,7 +21,7 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "40 Repository", "40 Reposit
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "50 Crosscutting", "50 Crosscutting", "{22919224-5C44-4CBD-ADDD-F66B7AFF5CA4}"
 EndProject
-Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "11 Service Identity", "11 Service Identity", "{CE0546C6-7DEF-426F-96F4-58B1824C4294}"
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "11 Authorization", "11 Authorization", "{CE0546C6-7DEF-426F-96F4-58B1824C4294}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "CrossCutting", "50 CrossCutting\CrossCutting\CrossCutting.csproj", "{38F4B3BE-5D92-4684-8916-1BB835F5D36F}"
 EndProject
@@ -40,6 +40,12 @@ EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Application", "20 Application\Application\Application.csproj", "{2FAA9269-BFAD-4622-8B24-AF3BE025CC72}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Application.Logic", "20 Application\Application.Logic\Application.Logic.csproj", "{D6EE6487-1004-45B7-8267-6B6078F7FF9D}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "12 Aunthentification", "12 Aunthentification", "{1F9A7C54-DCA9-40A5-BFE7-323A2BD83EE0}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "CustomAuthorization", "11 Authorization\Authorization\CustomAuthorization.csproj", "{AD6551F8-7F19-48E5-B198-F693E31238FF}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "CustomAuthorization.Logic", "11 Authorization\Authorization.Logic\CustomAuthorization.Logic.csproj", "{6349AE86-8F5D-4DF2-BD67-1C3CD6B2E1DD}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -229,6 +235,38 @@ Global
 		{D6EE6487-1004-45B7-8267-6B6078F7FF9D}.Release|x64.Build.0 = Release|Any CPU
 		{D6EE6487-1004-45B7-8267-6B6078F7FF9D}.Release|x86.ActiveCfg = Release|Any CPU
 		{D6EE6487-1004-45B7-8267-6B6078F7FF9D}.Release|x86.Build.0 = Release|Any CPU
+		{AD6551F8-7F19-48E5-B198-F693E31238FF}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{AD6551F8-7F19-48E5-B198-F693E31238FF}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{AD6551F8-7F19-48E5-B198-F693E31238FF}.Debug|ARM.ActiveCfg = Debug|Any CPU
+		{AD6551F8-7F19-48E5-B198-F693E31238FF}.Debug|ARM.Build.0 = Debug|Any CPU
+		{AD6551F8-7F19-48E5-B198-F693E31238FF}.Debug|x64.ActiveCfg = Debug|Any CPU
+		{AD6551F8-7F19-48E5-B198-F693E31238FF}.Debug|x64.Build.0 = Debug|Any CPU
+		{AD6551F8-7F19-48E5-B198-F693E31238FF}.Debug|x86.ActiveCfg = Debug|Any CPU
+		{AD6551F8-7F19-48E5-B198-F693E31238FF}.Debug|x86.Build.0 = Debug|Any CPU
+		{AD6551F8-7F19-48E5-B198-F693E31238FF}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{AD6551F8-7F19-48E5-B198-F693E31238FF}.Release|Any CPU.Build.0 = Release|Any CPU
+		{AD6551F8-7F19-48E5-B198-F693E31238FF}.Release|ARM.ActiveCfg = Release|Any CPU
+		{AD6551F8-7F19-48E5-B198-F693E31238FF}.Release|ARM.Build.0 = Release|Any CPU
+		{AD6551F8-7F19-48E5-B198-F693E31238FF}.Release|x64.ActiveCfg = Release|Any CPU
+		{AD6551F8-7F19-48E5-B198-F693E31238FF}.Release|x64.Build.0 = Release|Any CPU
+		{AD6551F8-7F19-48E5-B198-F693E31238FF}.Release|x86.ActiveCfg = Release|Any CPU
+		{AD6551F8-7F19-48E5-B198-F693E31238FF}.Release|x86.Build.0 = Release|Any CPU
+		{6349AE86-8F5D-4DF2-BD67-1C3CD6B2E1DD}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{6349AE86-8F5D-4DF2-BD67-1C3CD6B2E1DD}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{6349AE86-8F5D-4DF2-BD67-1C3CD6B2E1DD}.Debug|ARM.ActiveCfg = Debug|Any CPU
+		{6349AE86-8F5D-4DF2-BD67-1C3CD6B2E1DD}.Debug|ARM.Build.0 = Debug|Any CPU
+		{6349AE86-8F5D-4DF2-BD67-1C3CD6B2E1DD}.Debug|x64.ActiveCfg = Debug|Any CPU
+		{6349AE86-8F5D-4DF2-BD67-1C3CD6B2E1DD}.Debug|x64.Build.0 = Debug|Any CPU
+		{6349AE86-8F5D-4DF2-BD67-1C3CD6B2E1DD}.Debug|x86.ActiveCfg = Debug|Any CPU
+		{6349AE86-8F5D-4DF2-BD67-1C3CD6B2E1DD}.Debug|x86.Build.0 = Debug|Any CPU
+		{6349AE86-8F5D-4DF2-BD67-1C3CD6B2E1DD}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{6349AE86-8F5D-4DF2-BD67-1C3CD6B2E1DD}.Release|Any CPU.Build.0 = Release|Any CPU
+		{6349AE86-8F5D-4DF2-BD67-1C3CD6B2E1DD}.Release|ARM.ActiveCfg = Release|Any CPU
+		{6349AE86-8F5D-4DF2-BD67-1C3CD6B2E1DD}.Release|ARM.Build.0 = Release|Any CPU
+		{6349AE86-8F5D-4DF2-BD67-1C3CD6B2E1DD}.Release|x64.ActiveCfg = Release|Any CPU
+		{6349AE86-8F5D-4DF2-BD67-1C3CD6B2E1DD}.Release|x64.Build.0 = Release|Any CPU
+		{6349AE86-8F5D-4DF2-BD67-1C3CD6B2E1DD}.Release|x86.ActiveCfg = Release|Any CPU
+		{6349AE86-8F5D-4DF2-BD67-1C3CD6B2E1DD}.Release|x86.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
@@ -245,5 +283,7 @@ Global
 		{EF6980DB-15DE-4D06-A793-30E4F1485DD6} = {CA58B27D-4CB8-493D-9233-42438B755744}
 		{2FAA9269-BFAD-4622-8B24-AF3BE025CC72} = {3C3E0BB0-53B4-4749-B55E-DC8F69BD82C8}
 		{D6EE6487-1004-45B7-8267-6B6078F7FF9D} = {3C3E0BB0-53B4-4749-B55E-DC8F69BD82C8}
+		{AD6551F8-7F19-48E5-B198-F693E31238FF} = {CE0546C6-7DEF-426F-96F4-58B1824C4294}
+		{6349AE86-8F5D-4DF2-BD67-1C3CD6B2E1DD} = {CE0546C6-7DEF-426F-96F4-58B1824C4294}
 	EndGlobalSection
 EndGlobal

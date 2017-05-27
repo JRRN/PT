@@ -56,14 +56,25 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Configuration\AutomapperProfileService.cs" />
-    <Compile Include="Configuration\ServicesConfig.cs" />
+    <Compile Include="Configuration\AutomapperProfileApplication.cs" />
+    <Compile Include="Configuration\ApplicationConfig.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Services\Base\BaseApplicationCrud.cs" />
+    <Compile Include="Services\Client\ClientApplication.cs" />
+    <Compile Include="Services\Polices\PoliceApplication.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="packages.config" />
   </ItemGroup>
   <ItemGroup>
+    <ProjectReference Include="..\..\30 Domain\Domain.Logic\Domain.Logic.csproj">
+      <Project>{EF6980DB-15DE-4D06-A793-30E4F1485DD6}</Project>
+      <Name>Domain.Logic</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\..\30 Domain\Domain.Model\Domain.Model.csproj">
+      <Project>{4e66542d-e804-4b74-9108-50cdc8f6603a}</Project>
+      <Name>Domain.Model</Name>
+    </ProjectReference>
     <ProjectReference Include="..\..\30 Domain\Domain\Domain.csproj">
       <Project>{7B1E15D0-E34B-4AE8-8FAA-EF1E74EDA6D7}</Project>
       <Name>Domain</Name>
@@ -76,6 +87,9 @@
       <Project>{2FAA9269-BFAD-4622-8B24-AF3BE025CC72}</Project>
       <Name>Application</Name>
     </ProjectReference>
+  </ItemGroup>
+  <ItemGroup>
+    <WCFMetadata Include="Connected Services\" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 

@@ -25,7 +25,7 @@ namespace Repository.Logic
             throw new UnintentionalCodeFirstException();
         }
     
-        public virtual DbSet<Clientes> Clientes { get; set; }
-        public virtual DbSet<Proveedores> Proveedores { get; set; }
+        public virtual DbSet<Clients> Clients { get; set; }
+        public virtual DbSet<Polices> Polices { get; set; }
     }
 }

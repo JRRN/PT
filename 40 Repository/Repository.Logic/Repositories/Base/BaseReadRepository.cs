@@ -1,6 +1,8 @@
-﻿using System.Collections.Generic;
+﻿using System;
+using System.Collections.Generic;
 using System.Data.Entity;
 using System.Linq;
+using System.Linq.Expressions;
 
 namespace Repository.Logic.Repositories.Base
 {
@@ -12,12 +14,17 @@ namespace Repository.Logic.Repositories.Base
         {
         }
 
-        public virtual IEnumerable<TEntity> GetAll()
+        public IEnumerable<TEntity> GetAll()
         {
             return Context.Set<TEntity>().ToList();
         }
 
-        public virtual TEntity GetById(TEntityKey entityId)
+        public virtual IQueryable<TEntity> FindBy(Expression<Func<TEntity,bool>> predicate)
+        {
+           return Context.Set<TEntity>().Where(predicate);
+        }
+
+        public TEntity GetById(TEntityKey entityId)
         {
             var repositoryEntity =  Context.Set<TEntity>().Find(entityId);
 

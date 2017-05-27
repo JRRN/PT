@@ -34,6 +34,12 @@
       <HintPath>..\..\packages\AutoMapper.5.2.0\lib\net45\AutoMapper.dll</HintPath>
       <Private>True</Private>
     </Reference>
+    <Reference Include="EntityFramework, Version=6.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089, processorArchitecture=MSIL">
+      <HintPath>..\..\packages\EntityFramework.6.1.3\lib\net45\EntityFramework.dll</HintPath>
+    </Reference>
+    <Reference Include="EntityFramework.SqlServer, Version=6.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089, processorArchitecture=MSIL">
+      <HintPath>..\..\packages\EntityFramework.6.1.3\lib\net45\EntityFramework.SqlServer.dll</HintPath>
+    </Reference>
     <Reference Include="Microsoft.Practices.ServiceLocation, Version=1.3.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
       <HintPath>..\..\packages\CommonServiceLocator.1.3\lib\portable-net4+sl5+netcore45+wpa81+wp8\Microsoft.Practices.ServiceLocation.dll</HintPath>
       <Private>True</Private>
@@ -51,6 +57,7 @@
       <Private>True</Private>
     </Reference>
     <Reference Include="System" />
+    <Reference Include="System.ComponentModel.DataAnnotations" />
     <Reference Include="System.Core" />
     <Reference Include="System.Xml.Linq" />
     <Reference Include="System.Data.DataSetExtensions" />
@@ -60,19 +67,27 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Class1.cs" />
     <Compile Include="Configuration\AutoMapperDomainContainer.cs" />
     <Compile Include="Configuration\AutomapperDomainProfile.cs" />
     <Compile Include="Configuration\DomainConfig.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Services\Base\BaseServiceCrudLogic.cs" />
+    <Compile Include="Services\Base\BaseServiceLogic.cs" />
+    <Compile Include="Services\Client\ClientLogic.cs" />
+    <Compile Include="Services\Polices\PoliceLogic.cs" />
   </ItemGroup>
   <ItemGroup>
+    <None Include="App.config" />
     <None Include="packages.config" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\..\40 Repository\Repository.Logic\Repository.Logic.csproj">
       <Project>{94C9F721-2069-42CC-86B9-4909C228A485}</Project>
       <Name>Repository.Logic</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\..\40 Repository\Repository.Model\Repository.Model.csproj">
+      <Project>{d9a2d482-1cf9-403f-9b2d-95265f53fdf4}</Project>
+      <Name>Repository.Model</Name>
     </ProjectReference>
     <ProjectReference Include="..\..\40 Repository\Repository\Repository.csproj">
       <Project>{0FC67186-F334-49F4-88A6-31A1FE9DEF45}</Project>
@@ -81,6 +96,10 @@
     <ProjectReference Include="..\..\50 CrossCutting\CrossCutting\CrossCutting.csproj">
       <Project>{38F4B3BE-5D92-4684-8916-1BB835F5D36F}</Project>
       <Name>CrossCutting</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\Domain.Model\Domain.Model.csproj">
+      <Project>{4e66542d-e804-4b74-9108-50cdc8f6603a}</Project>
+      <Name>Domain.Model</Name>
     </ProjectReference>
     <ProjectReference Include="..\Domain\Domain.csproj">
       <Project>{7B1E15D0-E34B-4AE8-8FAA-EF1E74EDA6D7}</Project>
