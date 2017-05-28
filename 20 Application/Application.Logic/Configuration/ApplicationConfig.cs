@@ -1,6 +1,10 @@
 ﻿using Application.Configuration;
 using Domain.Configuration;
 using Domain.Logic.Configuration;
+using Domain.Logic.Services.Client;
+using Domain.Logic.Services.Polices;
+using Domain.Services.Client;
+using Domain.Services.Polices;
 using Microsoft.Practices.Unity;
 
 namespace Application.Logic.Configuration
@@ -15,7 +19,9 @@ namespace Application.Logic.Configuration
         private static void RegisterDomain(IUnityContainer container)
         {
             container.RegisterType<IDomainConfig, DomainConfig>();
-            container.RegisterType<IAutoMapperDomainContainer, AutoMapperDomainContainer>();
+
+            container.RegisterType<IClientLogic, ClientLogic>();
+            container.RegisterType<IPoliceLogic, PoliceLogic>();
 
         }
         private static void ConfigureDomain(IUnityContainer container)

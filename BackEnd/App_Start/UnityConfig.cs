@@ -9,6 +9,8 @@ using Application.Logic.Services.Polices;
 using Application.Configuration;
 using Application.Logic.Configuration;
 using AutoMapper;
+using CustomAuthorization;
+using CustomAuthorization.Logic;
 
 namespace BackEnd
 {
@@ -26,8 +28,15 @@ namespace BackEnd
         private static void RegisterTypes(UnityContainer container)
         {
             RegisterApplicationTypes(container);
+            RegisterAuthorizartion(container);
+            RegisterLayerTypes(container);
             RegisterAutoMapper(container);
-            }
+        }
+
+        private static void RegisterAuthorizartion(UnityContainer container)
+        {
+            container.RegisterType<IAuthorization, Authorization>();
+        }
 
         /// <summary>
         /// Gets the configured Unity container.
@@ -38,7 +47,11 @@ namespace BackEnd
         }
 
         #endregion
-
+        public static void RegisterLayerTypes(IUnityContainer container)
+        {
+            var applicationConfig = container.Resolve<IApplicationConfig>();
+            applicationConfig.Configure(container);
+        }
 
         private static void RegisterApplicationTypes(UnityContainer container)
         {
@@ -62,6 +75,7 @@ namespace BackEnd
             });
 
             container.RegisterInstance<IMapper>(mapperConfiguration.CreateMapper());
+
         }
     }
 }

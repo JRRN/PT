@@ -21,9 +21,6 @@ namespace BackEnd.Controllers
     {
         private readonly IClientApplication _clientApplication;
         private readonly IPoliceApplication _policeApplication;
-       // private readonly IValidationRoles _validationRoles;
-
-        // GET: api/Clients
 
         public EnterPointController(IMapper mapper, IAuthorization authorization, 
             IClientApplication clientApplication, IPoliceApplication policeApplication) 
@@ -31,11 +28,12 @@ namespace BackEnd.Controllers
         {
             _clientApplication = clientApplication;
             _policeApplication = policeApplication;
+
         }
 
         [HttpGet]
         [ActionName("GetClientById")]
-        [Authorize(Roles = "users, admin")]
+        //[Authorize(Roles = "users, admin")]
         public HttpResponseMessage GetClientById(int id)
         {
             var client = _clientApplication.GetById(id);

@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Net.Http.Headers;
 using System.Web.Http;
 using Unity.WebApi;
 
@@ -18,9 +19,17 @@ namespace BackEnd
             var container = UnityConfig.GetConfiguredContainer();
             config.DependencyResolver = new UnityDependencyResolver(container);
 
+            config.Formatters.JsonFormatter.SupportedMediaTypes.Add(new MediaTypeHeaderValue("text/html"));
+
+            config.Routes.MapHttpRoute(
+                name: "v2",
+                routeTemplate: "v2/{controller}/{action}/{id}",
+                defaults: new { id = RouteParameter.Optional }
+            );
+
             config.Routes.MapHttpRoute(
                 name: "DefaultApi",
-                routeTemplate: "v2/{id}",
+                routeTemplate: "api/{controller}/{action}/{id}",
                 defaults: new { id = RouteParameter.Optional }
             );
         }

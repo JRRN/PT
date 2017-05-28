@@ -23,15 +23,15 @@ namespace Domain.Logic.Configuration
 
         private void RegisterRepository(IUnityContainer container)
         {
-            var UnitOfWorkName = typeof(AxaAltranEntities).Name;
+            var unitOfWorkName = typeof(AxaAltranEntities).Name;
 
-            container.RegisterType<IUnitOfWork, AxaAltranEntities>(UnitOfWorkName);
+            container.RegisterType<IUnitOfWork, AxaAltranEntities>(unitOfWorkName);
 
             container.RegisterType<IClientesRepository , ClientesRepository>
-                (new InjectionConstructor(new ResolvedParameter<IUnitOfWork>(UnitOfWorkName)));
+                (new InjectionConstructor(new ResolvedParameter<IUnitOfWork>(unitOfWorkName)));
 
             container.RegisterType<IPolicesRepository, PolicesRepository>
-                (new InjectionConstructor(new ResolvedParameter<IUnitOfWork>(UnitOfWorkName)));
+                (new InjectionConstructor(new ResolvedParameter<IUnitOfWork>(unitOfWorkName)));
 
         }
     }
