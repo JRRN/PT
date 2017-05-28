@@ -25,35 +25,43 @@ namespace BackEnd.Controllers
 
         // GET: api/Clients
 
-        public EnterPointController(IMapper mapper, IAuthorization authorization, IClientApplication clientApplication) 
+        public EnterPointController(IMapper mapper, IAuthorization authorization, 
+            IClientApplication clientApplication, IPoliceApplication policeApplication) 
             : base(mapper, authorization)
         {
             _clientApplication = clientApplication;
+            _policeApplication = policeApplication;
         }
 
-
-        // GET: api/Clients/5
+        [HttpGet]
+        [ActionName("GetClientById")]
         [Authorize(Roles = "users, admin")]
         public string GetClientById(int id)
         {
             return JsonConvert.SerializeObject(_clientApplication.GetById(id));
         }
 
+        [HttpGet]
+        [ActionName("GetClientByUserName")]
         [Authorize(Roles = "users, admin")]
         public string GetClientByUserName(string clientName)
         {
-            var policeEntity = _clientApplication.GetByName(clientName);
+            var policeEntity = _clientApplication.FindByName(clientName);
             return JsonConvert.SerializeObject(policeEntity);
         }
 
+        [HttpGet]
+        [ActionName("GetPolicesByClient")]
         [Authorize(Roles = "admin")]
-        public string GetPolicesByClient(string UserName)
+        public string GetPolicesByClient(string userName)
         {
-            var idClient = _clientApplication.GetAll().FirstOrDefault(client => client.Name.Equals(UserName)).ObjectId;
+            var idClient = _clientApplication.FindByName(userName).ObjectId;
             var policeEntity = _policeApplication.GetAllPolices().Where(police => police.clientId.Equals(idClient));
             return JsonConvert.SerializeObject(policeEntity);
         }
 
+        [HttpGet]
+        [ActionName("GetLinked")]
         [Authorize(Roles = "admin")]
         public string GetLinked(string policeNumber)
         {

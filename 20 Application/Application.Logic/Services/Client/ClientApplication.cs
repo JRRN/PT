@@ -1,4 +1,7 @@
-﻿using System.Collections.Generic;
+﻿using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Linq.Expressions;
 using Application.Services.Client;
 using Domain.Services.Client;
 
@@ -23,9 +26,9 @@ namespace Application.Logic.Services.Client
             return _clientLogic.GetAll();
         }
 
-        public Domain.Model.Client GetByName(string entityName)
+        public Domain.Model.Client FindByName(string userName)
         {
-            return _clientLogic.FindByName(entityName);
+            return _clientLogic.FindByName(userName);
         }
     }
 }
