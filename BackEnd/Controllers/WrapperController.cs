@@ -15,6 +15,7 @@ using Newtonsoft.Json;
 
 namespace BackEnd.Controllers
 {
+
     public class WrapperController : BaseController
     {
         private readonly IClientWrapperApplication _clientApplication;
@@ -33,20 +34,22 @@ namespace BackEnd.Controllers
 
             var client = clients.Clients.FirstOrDefault(clientById => clientById.id.Equals(id));
 
-            if (client == null)
+            if (client == null || !_authorization.GetAuthorizationByAction("GetClientById", client.role))
             {
                 return Request.CreateResponse(HttpStatusCode.NotFound);
             }
             return Request.CreateResponse(HttpStatusCode.Created, JsonConvert.SerializeObject(client));
         }
 
+        
         [HttpGet]
         [ActionName("GetClientByUserName")]
-        [Authorize(Roles = "users, admin")]
-        public HttpResponseMessage GetClientByUserName(string clientName)
+        //[Authorize(Roles = "users, admin")]
+        public HttpResponseMessage GetClientByUserName(string id)
         {
             var clients = _clientApplication.GetAllClientsWrapper();
-            var client = clients.Clients.FirstOrDefault(clientByName => clientByName.name.Equals(clientName));
+            var client = clients.Clients.FirstOrDefault(clientByName => clientByName.name.Equals(id));
+            if (client == null || !_authorization.GetAuthorizationByAction("GetClientByUserName", client.role))
             if (client == null)
             {
                 return Request.CreateResponse(HttpStatusCode.NotFound);
@@ -56,19 +59,19 @@ namespace BackEnd.Controllers
 
         [HttpGet]
         [ActionName("GetPolicesByClient")]
-        [Authorize(Roles = "admin")]
-        public HttpResponseMessage GetPolicesByClient(string userName)
+        //[Authorize(Roles = "admin")]
+        public HttpResponseMessage GetPolicesByClient(string id)
         {
             var clients = _clientApplication.GetAllClientsWrapper();
-            var firstOrDefault = clients.Clients.FirstOrDefault(clientByName => clientByName.name.Equals(userName));
-            if (firstOrDefault != null)
+            var firstOrDefault = clients.Clients.FirstOrDefault(clientByName => clientByName.name.Equals(id));
+            if (firstOrDefault != null )
             {
                 var clientId = firstOrDefault.id;
 
                 var policies = _policeApplication.GetAllPolicesWrapper();
 
                 var policeEntity = policies.Policies.Where(policiesByUser => policiesByUser.clientId.Equals(clientId));
-                if (!policeEntity.Any())
+                if (!policeEntity.Any() || !_authorization.GetAuthorizationByAction("GetPolicesByClient", firstOrDefault.role))
                 {
                     return Request.CreateResponse(HttpStatusCode.NotFound);
                 }
@@ -83,20 +86,20 @@ namespace BackEnd.Controllers
 
         [HttpGet]
         [ActionName("GetLinked")]
-        [Authorize(Roles = "admin")]
-        public HttpResponseMessage GetLinked(string policeNumber)
+        //[Authorize(Roles = "admin")]
+        public HttpResponseMessage GetLinked(string id)
         {
             var policies = _policeApplication.GetAllPolicesWrapper();
             var clients = _clientApplication.GetAllClientsWrapper();
 
-            var firstOrDefault = policies.Policies.FirstOrDefault(policieUser => policieUser.id.Equals(policeNumber));
-            if (firstOrDefault != null)
+            var firstOrDefault = policies.Policies.FirstOrDefault(policieUser => policieUser.id.Equals(id));
+            if (firstOrDefault != null )
             {
                 var userPolice = firstOrDefault.clientId;
 
                 var clientLinked = clients.Clients.FirstOrDefault(linkedClient => linkedClient.id.Equals(userPolice));
 
-                if (clientLinked == null)
+                if (clientLinked == null || !_authorization.GetAuthorizationByAction("GetLinked", clientLinked.role))
                 {
                 
                 }

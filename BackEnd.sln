@@ -41,7 +41,7 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Application", "20 Applicati
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Application.Logic", "20 Application\Application.Logic\Application.Logic.csproj", "{D6EE6487-1004-45B7-8267-6B6078F7FF9D}"
 EndProject
-Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "12 Aunthentification", "12 Aunthentification", "{1F9A7C54-DCA9-40A5-BFE7-323A2BD83EE0}"
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "12 Authentication", "12 Authentication", "{1F9A7C54-DCA9-40A5-BFE7-323A2BD83EE0}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "CustomAuthorization", "11 Authorization\Authorization\CustomAuthorization.csproj", "{AD6551F8-7F19-48E5-B198-F693E31238FF}"
 EndProject
