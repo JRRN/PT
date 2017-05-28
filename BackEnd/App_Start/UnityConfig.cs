@@ -8,9 +8,13 @@ using Application.Services.Polices;
 using Application.Logic.Services.Polices;
 using Application.Configuration;
 using Application.Logic.Configuration;
+using Application.Services.ClientWrapper;
+using Application.Services.PolicesWrapper;
 using AutoMapper;
 using CustomAuthorization;
 using CustomAuthorization.Logic;
+using Application.Logic.Services.ClientWrapper;
+using Application.Logic.Services.PolicesWrapper;
 
 namespace BackEnd
 {
@@ -59,6 +63,9 @@ namespace BackEnd
 
             container.RegisterType<IClientApplication, ClientApplication>();
             container.RegisterType<IPoliceApplication, PoliceApplication>();
+
+            container.RegisterType<IClientWrapperApplication, ClientWrapperApplication>();
+            container.RegisterType<IPoliceWrapperApplication, PoliceWrapperApplication>();
         }
 
         public static void RegisterAutoMapper(IUnityContainer container)

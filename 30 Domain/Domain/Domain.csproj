@@ -61,8 +61,11 @@
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Services\Base\IBaseServiceCrudLogic.cs" />
     <Compile Include="Services\Base\IBaseServiceReadLogic.cs" />
+    <Compile Include="Services\ClientWrapper\IClientWrapperLogic.cs" />
     <Compile Include="Services\Client\IClientLogic.cs" />
+    <Compile Include="Services\PolicesWrapper\IPoliceWrapperLogic.cs" />
     <Compile Include="Services\Polices\IPoliceLogic.cs" />
+    <Compile Include="Services\Rest\IRestServiceLogic.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="packages.config" />

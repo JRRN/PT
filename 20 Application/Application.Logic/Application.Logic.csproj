@@ -60,7 +60,9 @@
     <Compile Include="Configuration\ApplicationConfig.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Services\Base\BaseApplicationCrud.cs" />
+    <Compile Include="Services\ClientWrapper\ClientWrapperApplication.cs" />
     <Compile Include="Services\Client\ClientApplication.cs" />
+    <Compile Include="Services\PolicesWrapper\PoliceWrapperApplication.cs" />
     <Compile Include="Services\Polices\PoliceApplication.cs" />
   </ItemGroup>
   <ItemGroup>
