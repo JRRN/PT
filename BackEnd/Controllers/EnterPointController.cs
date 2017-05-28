@@ -36,38 +36,55 @@ namespace BackEnd.Controllers
         [HttpGet]
         [ActionName("GetClientById")]
         [Authorize(Roles = "users, admin")]
-        public string GetClientById(int id)
+        public HttpResponseMessage GetClientById(int id)
         {
-            return JsonConvert.SerializeObject(_clientApplication.GetById(id));
+            var client = _clientApplication.GetById(id);
+            
+            if (client == null)
+            {
+                return Request.CreateResponse(HttpStatusCode.NotFound);
+            }
+            return Request.CreateResponse(HttpStatusCode.Created, JsonConvert.SerializeObject(client));
         }
 
         [HttpGet]
         [ActionName("GetClientByUserName")]
         [Authorize(Roles = "users, admin")]
-        public string GetClientByUserName(string clientName)
+        public HttpResponseMessage GetClientByUserName(string clientName)
         {
             var policeEntity = _clientApplication.FindByName(clientName);
-            return JsonConvert.SerializeObject(policeEntity);
+            if (policeEntity == null)
+            {
+                return Request.CreateResponse(HttpStatusCode.NotFound);
+            }
+            return Request.CreateResponse(HttpStatusCode.Created, JsonConvert.SerializeObject(policeEntity));
         }
 
         [HttpGet]
         [ActionName("GetPolicesByClient")]
         [Authorize(Roles = "admin")]
-        public string GetPolicesByClient(string userName)
+        public HttpResponseMessage GetPolicesByClient(string userName)
         {
             var idClient = _clientApplication.FindByName(userName).ObjectId;
             var policeEntity = _policeApplication.GetAllPolices().Where(police => police.clientId.Equals(idClient));
-            return JsonConvert.SerializeObject(policeEntity);
+            if (!policeEntity.Any())
+            {
+                return Request.CreateResponse(HttpStatusCode.NotFound);
+            }
+            return Request.CreateResponse(HttpStatusCode.Created, JsonConvert.SerializeObject(policeEntity));
         }
 
         [HttpGet]
         [ActionName("GetLinked")]
         [Authorize(Roles = "admin")]
-        public string GetLinked(string policeNumber)
+        public HttpResponseMessage GetLinked(string policeNumber)
         {
             var policeClient = _policeApplication.GetAllPolices().FirstOrDefault(police => police.Id.Equals(policeNumber));
             var clientPoliceAssociated = _clientApplication.GetById(policeClient.Id);
-            return JsonConvert.SerializeObject(clientPoliceAssociated);
+            if (clientPoliceAssociated == null) { 
+                return Request.CreateResponse(HttpStatusCode.NotFound);
+            }
+            return Request.CreateResponse(HttpStatusCode.Created, JsonConvert.SerializeObject(clientPoliceAssociated));
         }
     }
 }
