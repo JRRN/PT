@@ -36,9 +36,9 @@ namespace BackEnd.Controllers
 
             if (client == null || !_authorization.GetAuthorizationByAction("GetClientById", client.role))
             {
-                return Request.CreateResponse(HttpStatusCode.NotFound);
+                return Request.CreateResponse(HttpStatusCode.Unauthorized);
             }
-            return Request.CreateResponse(HttpStatusCode.Created, JsonConvert.SerializeObject(client));
+            return Request.CreateResponse(HttpStatusCode.OK, JsonConvert.SerializeObject(client));
         }
 
         
@@ -50,9 +50,8 @@ namespace BackEnd.Controllers
             var clients = _clientApplication.GetAllClientsWrapper();
             var client = clients.Clients.FirstOrDefault(clientByName => clientByName.name.Equals(id));
             if (client == null || !_authorization.GetAuthorizationByAction("GetClientByUserName", client.role))
-            if (client == null)
             {
-                return Request.CreateResponse(HttpStatusCode.NotFound);
+                return Request.CreateResponse(HttpStatusCode.Unauthorized);
             }
             return Request.CreateResponse(HttpStatusCode.Created, JsonConvert.SerializeObject(client));
         }
@@ -73,9 +72,9 @@ namespace BackEnd.Controllers
                 var policeEntity = policies.Policies.Where(policiesByUser => policiesByUser.clientId.Equals(clientId));
                 if (!policeEntity.Any() || !_authorization.GetAuthorizationByAction("GetPolicesByClient", firstOrDefault.role))
                 {
-                    return Request.CreateResponse(HttpStatusCode.NotFound);
+                    return Request.CreateResponse(HttpStatusCode.Unauthorized);
                 }
-                return Request.CreateResponse(HttpStatusCode.Created, JsonConvert.SerializeObject(policeEntity));
+                return Request.CreateResponse(HttpStatusCode.OK, JsonConvert.SerializeObject(policeEntity));
             }
             else
             {
@@ -101,9 +100,9 @@ namespace BackEnd.Controllers
 
                 if (clientLinked == null || !_authorization.GetAuthorizationByAction("GetLinked", clientLinked.role))
                 {
-                
+                    return Request.CreateResponse(HttpStatusCode.Unauthorized);
                 }
-                return Request.CreateResponse(HttpStatusCode.Created, JsonConvert.SerializeObject(clientLinked));
+                return Request.CreateResponse(HttpStatusCode.OK, JsonConvert.SerializeObject(clientLinked));
             }
             else
             {
